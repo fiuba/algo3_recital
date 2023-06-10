@@ -1,0 +1,65 @@
+@startuml
+
+class Agencia {
+
+    + Agencia()
+    + List<Entrada> comprar(List<Pedido>)
+
+    - List<Entrada> filtrarEntradasNulas( List<Entrada> )
+}
+
+class Pedido {
+    - cantidad;
+
+    + List<Entreda> completar(ArrayList<Tipo> disponibilidad)
+}
+class Tipo {
+    - precio
+
+    + Tipo( precio, List<MedioPago>)
+    + Entreda obtenerEntradaPara(Tipo tipo, MedioPago medioPago)
+    + boolean equals(Object)
+
+    - boolean soporta(medioPago)
+}
+
+class TipoA {
+
+    + TipoA()
+}
+
+class TipoB {
+
+    + TipoB()
+}
+
+interface MedioPago {
+    Entreda crear(int gasto, Tipo tipo);
+}
+
+class Gold {
+
+    + boolean equals(Object other)
+    + Entreda crear(int gasto, Tipo tipo)
+
+}
+
+class PertenenciaH {
+
+    + boolean equals(Object other)
+    + Entreda crear(int gasto, Tipo tipo)
+
+}
+Agencia *- Tipo: "disponibilidad"
+
+TipoA ---|> Tipo
+TipoB ---|> Tipo
+
+Tipo o-- "*" MedioPago
+
+MedioPago <|-- PertenenciaH
+MedioPago <|-- Gold
+
+Pedido o- Tipo
+Pedido o- MedioPago
+@enduml
