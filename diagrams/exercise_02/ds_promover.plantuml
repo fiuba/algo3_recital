@@ -1,0 +1,31 @@
+@startuml(id=1)
+
+title Promover a epica un issue de una epica
+
+create "e: Epica"
+": TestCase" -> "e: Epica": new
+
+": TestCase" -> "e: Epica": agregarIssue(titulo)
+
+activate "e: Epica"
+create "i: Issue"
+"e: Epica" -> "i: Issue": Issue(titulo)
+
+activate ": Item"
+"e: Epica" -> ": Item": Item(i)
+": Item" --> "e: Epica": "agrego `i` a la lista de items"
+deactivate ": Item"
+
+"e: Epica" --> ": TestCase": i
+deactivate "e: Epica"
+
+": TestCase" -> ": Item": promover()
+": Item" -> ": Role": promover()
+": Role" --> ": Item": this
+note left
+Escribo mi `role` con `this`
+end note
+
+
+
+@enduml

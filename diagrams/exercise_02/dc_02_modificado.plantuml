@@ -1,0 +1,30 @@
+@startuml(id=1)
+skinparam classAttributeIconSize 0
+
+interface Role {
+   + Role promover()
+}
+
+class Item {
+    + Item(role)
+
+    + Role promover()
+}
+
+class Issue {
+    + Issue(titulo)
+
+    + Role promover()
+}
+
+class Epica {
+    + Epica(titulo)
+
+    + Role promover()
+}
+
+Role <|.. Item
+Role <|.. Issue
+Role <|.. Epica
+
+@enduml

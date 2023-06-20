@@ -1,0 +1,21 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+class Epica {
+
+    + Issue agregar(titulo)
+    + Epica agregar(titulo)
+
+    + Duracion duracionEstemada()
+}
+
+class Issue {
+
+    + Duracion duracionEstemada()
+}
+
+Epica o-- "*" Issue
+Epica o- "*" Epica
+
+@enduml

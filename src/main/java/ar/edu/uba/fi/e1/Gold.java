@@ -1,4 +1,4 @@
-package ar.edu.uba.fi;
+package ar.edu.uba.fi.e1;
 
 public class Gold implements MedioPago {
 

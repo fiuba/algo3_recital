@@ -1,0 +1,31 @@
+@startuml(id=1)
+skinparam classAttributeIconSize 0
+
+interface Role {
+   + Role promover()
+}
+
+class Item {
+   + Item(role)
+
+   + Role promover()
+}
+
+note right of Item::promover
+this.role = this.role.promover()
+end note
+
+class Epica {
+    - titulo
+
+    + Item agregarIssue(titulo)
+    + Item agregarEpica(titulo)
+
+    + Duracion duracionEstemada()
+    + Role promover()
+}
+
+Epica *- "*" Item
+Item o-- "*" Role
+
+@enduml
