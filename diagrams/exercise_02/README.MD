@@ -6,4 +6,6 @@
    - La relación de asociación `Epica` con `Issue` significa que una épica
      puede contener a varios `Issue`.
 2. Respuesta a 2:
-3. 
+    - Ver diagrama
+3. Respuesta a 3:
+   - Ver diagramas
