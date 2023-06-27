@@ -2,10 +2,10 @@ package ar.edu.uba.fi.e1;
 
 import java.util.Objects;
 
-public class Entreda {
+public class Entrada {
     private Tipo tipo;
 
-    public Entreda(Tipo tipo) {
+    public Entrada(Tipo tipo) {
         this.tipo = tipo;
 
     }
@@ -14,8 +14,8 @@ public class Entreda {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Entreda entreda = (Entreda) o;
-        return Objects.equals(tipo, entreda.tipo);
+        Entrada entrada = (Entrada) o;
+        return Objects.equals(tipo, entrada.tipo);
     }
 
     @Override

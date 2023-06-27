@@ -9,8 +9,8 @@ public class PertenenciaH implements MedioPago{
     }
 
     @Override
-    public Entreda crear(int gasto, Tipo tipo) {
+    public Entrada crear(int gasto, Tipo tipo) {
 
-        return new Entreda(tipo);
+        return new Entrada(tipo);
     }
 }

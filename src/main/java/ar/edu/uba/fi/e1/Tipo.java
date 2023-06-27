@@ -12,7 +12,7 @@ public class Tipo {
         this.precio = precio;
         this.mediosDePagos = new ArrayList<>(Arrays.asList(mediosDePago));
     }
-    public Entreda obtenerEntradaPara(Tipo tipo, MedioPago medioPago) {
+    public Entrada obtenerEntradaPara(Tipo tipo, MedioPago medioPago) {
         if (this.equals(tipo)) {
             MedioPago aUtilizar = soporta(medioPago);
 

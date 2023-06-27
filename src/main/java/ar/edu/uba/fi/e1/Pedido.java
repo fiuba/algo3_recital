@@ -14,7 +14,7 @@ public class Pedido {
         this.medioDePago = medioPago;
     }
 
-    public List<Entreda> completar(ArrayList<Tipo> disponibilidad) {
+    public List<Entrada> completar(ArrayList<Tipo> disponibilidad) {
         ArrayList resultados = new ArrayList();
 
         for (int i = 0; i < this.cantidad; ++i) {

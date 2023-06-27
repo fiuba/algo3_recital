@@ -17,11 +17,11 @@ public class UseCasesTest {
     public void case_01() {
         Agencia a = new Agencia();
 
-        List<Entreda> compra = a.comprar(new Pedido(2, new TipoB(), new PertenenciaH()));
-        ArrayList<Entreda> compraEsperada = new ArrayList<>(
+        List<Entrada> compra = a.comprar(new Pedido(2, new TipoB(), new PertenenciaH()));
+        ArrayList<Entrada> compraEsperada = new ArrayList<>(
                 Arrays.asList(
-                        new Entreda( new TipoB()),
-                        new Entreda( new TipoB())
+                        new Entrada( new TipoB()),
+                        new Entrada( new TipoB())
                 )
         );
 
@@ -32,10 +32,10 @@ public class UseCasesTest {
     public void case_02() {
         Agencia a = new Agencia();
 
-        List<Entreda> compra = a.comprar(new Pedido(2, new TipoA(), new Gold()));
-        ArrayList<Entreda> compraEsperada = new ArrayList<>(
+        List<Entrada> compra = a.comprar(new Pedido(2, new TipoA(), new Gold()));
+        ArrayList<Entrada> compraEsperada = new ArrayList<>(
                 Arrays.asList(
-                        new Entreda( new TipoA())
+                        new Entrada( new TipoA())
                 )
         );
 
@@ -45,16 +45,42 @@ public class UseCasesTest {
     public void case_03() {
         Agencia a = new Agencia();
 
-        List<Entreda> compra = a.comprar(
+        List<Entrada> compra = a.comprar(
                 new Pedido(2, new TipoB(), new PertenenciaH()),
                 new Pedido(2, new TipoA(), new PertenenciaH()));
-        ArrayList<Entreda> compraEsperada = new ArrayList<>(
+        ArrayList<Entrada> compraEsperada = new ArrayList<>(
                 Arrays.asList(
-                        new Entreda( new TipoB()),
-                        new Entreda( new TipoB()),
-                        new Entreda( new TipoA()),
-                        new Entreda( new TipoA())
+                        new Entrada( new TipoB()),
+                        new Entrada( new TipoB()),
+                        new Entrada( new TipoA()),
+                        new Entrada( new TipoA())
                 )
+        );
+
+        assertEquals(compraEsperada, compra);
+    }
+
+    @Test
+    public void case_04_GoldCannotBuyTipoB() {
+        Agencia a = new Agencia();
+
+        List<Entrada> compra = a.comprar(
+                new Pedido(2, new TipoB(), new Gold()));
+        ArrayList<Entrada> compraEsperada = new ArrayList<>(
+                Arrays.asList()
+        );
+
+        assertEquals(compraEsperada, compra);
+    }
+
+    @Test
+    public void case_05_GoldCannotBuyTwoTipoA() {
+        Agencia a = new Agencia();
+
+        List<Entrada> compra = a.comprar(
+                new Pedido(2, new TipoA(), new Gold()));
+        ArrayList<Entrada> compraEsperada = new ArrayList<>(
+                Arrays.asList(new Entrada( new TipoA()))
         );
 
         assertEquals(compraEsperada, compra);

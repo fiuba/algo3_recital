@@ -15,13 +15,13 @@ public class Agencia {
         disponibilidad.add(new TipoB());
     }
 
-    public List<Entreda> comprar(Pedido... pedidos) {
+    public List<Entrada> comprar(Pedido... pedidos) {
         ArrayList resultados = new ArrayList();
 
         for(Pedido p : pedidos) {
-            List<Entreda> entradas = p.completar(disponibilidad);
+            List<Entrada> entradas = p.completar(disponibilidad);
 
-            for(Entreda e : entradas) {
+            for(Entrada e : entradas) {
                 resultados.add(e);
             }
 
@@ -29,8 +29,8 @@ public class Agencia {
         return filtrarEntradasNulas(resultados);
     }
 
-    private static List<Entreda> filtrarEntradasNulas(ArrayList resultados) {
-        return (List<Entreda>) resultados.parallelStream()
+    private static List<Entrada> filtrarEntradasNulas(ArrayList resultados) {
+        return (List<Entrada>) resultados.parallelStream()
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
