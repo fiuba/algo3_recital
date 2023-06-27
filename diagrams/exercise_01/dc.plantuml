@@ -1,5 +1,4 @@
 @startuml
-
 class Agencia {
 
     + Agencia()
@@ -11,13 +10,13 @@ class Agencia {
 class Pedido {
     - cantidad;
 
-    + List<Entreda> completar(ArrayList<Tipo> disponibilidad)
+    + List<Entrada> completar(ArrayList<Tipo> disponibilidad)
 }
 class Tipo {
     - precio
 
     + Tipo( precio, List<MedioPago>)
-    + Entreda obtenerEntradaPara(Tipo tipo, MedioPago medioPago)
+    + Entrada obtenerEntradaPara(Tipo tipo, MedioPago medioPago)
     + boolean equals(Object)
 
     - boolean soporta(medioPago)
@@ -34,23 +33,24 @@ class TipoB {
 }
 
 interface MedioPago {
-    Entreda crear(int gasto, Tipo tipo);
+    Entrada crear(int gasto, Tipo tipo);
 }
 
 class Gold {
 
     + boolean equals(Object other)
-    + Entreda crear(int gasto, Tipo tipo)
+    + Entrada crear(int gasto, Tipo tipo)
 
 }
 
 class PertenenciaH {
 
     + boolean equals(Object other)
-    + Entreda crear(int gasto, Tipo tipo)
+    + Entrada crear(int gasto, Tipo tipo)
 
 }
 Agencia *- Tipo: "disponibilidad"
+Agencia ..> Pedido
 
 TipoA ---|> Tipo
 TipoB ---|> Tipo
