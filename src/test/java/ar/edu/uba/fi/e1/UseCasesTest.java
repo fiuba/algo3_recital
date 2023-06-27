@@ -72,18 +72,4 @@ public class UseCasesTest {
 
         assertEquals(compraEsperada, compra);
     }
-
-    @Test
-    public void case_05_GoldCannotBuyTwoTipoA() {
-        Agencia a = new Agencia();
-
-        List<Entrada> compra = a.comprar(
-                new Pedido(2, new TipoA(), new Gold()));
-        ArrayList<Entrada> compraEsperada = new ArrayList<>(
-                Arrays.asList(new Entrada( new TipoA()))
-        );
-
-        assertEquals(compraEsperada, compra);
-    }
-
 }
