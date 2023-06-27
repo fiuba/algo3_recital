@@ -1,4 +1,6 @@
-# Ejercicio 1
+# Ejercicio 2
+
+Importante: No se pedira el %60 para aprobar el parcial como fue comentado en el examen
 
 Esta lista de errores complementa los [criterios de 
 corrección de TP1][tp1_criterios].
