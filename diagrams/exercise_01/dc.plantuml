@@ -10,13 +10,13 @@ class Agencia {
 class Pedido {
     - cantidad;
 
-    + List<Entrada> completar(ArrayList<Tipo> disponibilidad)
+    + List<Entrada> completar(ArrayList<TipoEntrada> disponibilidad)
 }
-class Tipo {
+class TipoEntrada {
     - precio
 
-    + Tipo( precio, List<MedioPago>)
-    + Entrada obtenerEntradaPara(Tipo tipo, MedioPago medioPago)
+    + TipoEntrada( precio, List<MedioPago>)
+    + Entrada obtenerEntradaPara(TipoEntrada tipo, MedioPago medioPago)
     + boolean equals(Object)
 
     - boolean soporta(medioPago)
@@ -33,33 +33,33 @@ class TipoB {
 }
 
 interface MedioPago {
-    Entrada crear(int gasto, Tipo tipo);
+    Entrada crear(int gasto, TipoEntrada tipo);
 }
 
 class Gold {
 
     + boolean equals(Object other)
-    + Entrada crear(int gasto, Tipo tipo)
+    + Entrada crear(int gasto, TipoEntrada tipo)
 
 }
 
 class PertenenciaH {
 
     + boolean equals(Object other)
-    + Entrada crear(int gasto, Tipo tipo)
+    + Entrada crear(int gasto, TipoEntrada tipo)
 
 }
-Agencia *- Tipo: "disponibilidad"
+Agencia *- TipoEntrada: "disponibilidad"
 Agencia ..> Pedido
 
-TipoA ---|> Tipo
-TipoB ---|> Tipo
+TipoA ---|> TipoEntrada
+TipoB ---|> TipoEntrada
 
-Tipo o-- "*" MedioPago
+TipoEntrada o-- "*" MedioPago
 
 MedioPago <|-- PertenenciaH
 MedioPago <|-- Gold
 
-Pedido o- Tipo
+Pedido o- TipoEntrada
 Pedido o- MedioPago
 @enduml

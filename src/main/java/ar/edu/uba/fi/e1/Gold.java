@@ -16,7 +16,7 @@ public class Gold implements MedioPago {
     }
 
     @Override
-    public Entrada crear(int gasto, Tipo tipo) {
+    public Entrada crear(int gasto, TipoEntrada tipo) {
         this.gastosAcumulados = this.gastosAcumulados + gasto;
 
         if ( this.gastosAcumulados <= this.limite) {

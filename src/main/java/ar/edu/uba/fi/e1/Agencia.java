@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Agencia {
-    private final ArrayList<Tipo> disponibilidad;
+    private final ArrayList<TipoEntrada> disponibilidad;
 
     public Agencia() {
         disponibilidad = new ArrayList<>();

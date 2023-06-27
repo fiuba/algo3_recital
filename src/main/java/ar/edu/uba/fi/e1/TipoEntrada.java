@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Tipo {
+public class TipoEntrada {
     private final ArrayList<MedioPago> mediosDePagos;
     private int precio;
 
-    public Tipo(int precio, MedioPago ... mediosDePago) {
+    public TipoEntrada(int precio, MedioPago ... mediosDePago) {
         this.precio = precio;
         this.mediosDePagos = new ArrayList<>(Arrays.asList(mediosDePago));
     }
-    public Entrada obtenerEntradaPara(Tipo tipo, MedioPago medioPago) {
+    public Entrada obtenerEntradaPara(TipoEntrada tipo, MedioPago medioPago) {
         if (this.equals(tipo)) {
             MedioPago aUtilizar = soporta(medioPago);
 
@@ -32,7 +32,7 @@ public class Tipo {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Tipo tipo1 = (Tipo) o;
+        TipoEntrada tipo1 = (TipoEntrada) o;
         return Objects.equals(mediosDePagos, tipo1.mediosDePagos);
     }
 

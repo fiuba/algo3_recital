@@ -3,9 +3,9 @@ package ar.edu.uba.fi.e1;
 import java.util.Objects;
 
 public class Entrada {
-    private Tipo tipo;
+    private TipoEntrada tipo;
 
-    public Entrada(Tipo tipo) {
+    public Entrada(TipoEntrada tipo) {
         this.tipo = tipo;
 
     }
