@@ -1,0 +1,62 @@
+@startuml
+title Caso 2: comprador pide 2 entradas TipoA y paga con la tarjeta Gold
+
+activate ": TestCase"
+create "a: Agencia"
+": TestCase" -> "a: Agencia": Agencia()
+
+create "ta: TipoA"
+": TestCase" -> "ta: TipoA": TipoA()
+
+create "mp1: PertenenciaH"
+"ta: TipoA" -> "mp1: PertenenciaH": PertenenciaH()
+
+create "mp2: Gold"
+"ta: TipoA" -> "mp2: Gold": Gold()
+
+create "g: Gold"
+": TestCase" -> "g: Gold": Gold()
+
+create "p: Pedido"
+": TestCase" -> "p: Pedido": Pedido(2, ta, g)
+
+
+": TestCase" -> "a: Agencia": comprar(p)
+activate "a: Agencia"
+
+"a: Agencia" -> "p: Pedido": completar(disponibilidad)
+activate "p: Pedido"
+
+"p: Pedido" -> "ta: TipoA": obtenerEntradas(tipoBuscado, medioDePago)
+activate "ta: TipoA"
+
+"ta: TipoA" -> "mp1: PertenenciaH": soporta(medioDePago)
+activate "mp1: PertenenciaH"
+
+"mp1: PertenenciaH" -> "g: Gold": equals(mp1)
+activate "g: Gold"
+return false
+return false
+
+"ta: TipoA" -> "mp2: Gold": soporta(medioDePago)
+activate "mp2: Gold"
+"mp2: Gold" -> "g: Gold": equals(mp2)
+activate "g: Gold"
+return true
+return true
+
+"ta: TipoA" -> "mp2: Gold": crear(precio, tipo)
+activate "mp2: Gold"
+
+create ": Entrada"
+"mp2: Gold" -> ": Entrada": Entrada(tipo)
+return entrada
+
+"ta: TipoA" -> "mp2: Gold": crear(precio, tipo)
+activate "mp2: Gold"
+return null
+return entradas
+return entradas
+"a: Agencia" -> "a: Agencia": filtrarEntradasNulas()
+return entradas
+@enduml

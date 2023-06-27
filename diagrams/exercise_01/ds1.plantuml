@@ -1,0 +1,50 @@
+@startuml
+title Caso 1: comprador pide 2 entradas TipoB y paga con la tarjeta PertenenciaH
+
+activate ": TestCase"
+create "a: Agencia"
+": TestCase" -> "a: Agencia": Agencia()
+
+create "tb: TipoB"
+": TestCase" -> "tb: TipoB": TipoB()
+
+create "mp1: PertenenciaH"
+"tb: TipoB" -> "mp1: PertenenciaH": PertenenciaH()
+
+create "ph: PertenenciaH"
+": TestCase" -> "ph: PertenenciaH": PertenenciaH()
+
+create "p: Pedido"
+": TestCase" -> "p: Pedido": Pedido(2, tb, ph)
+
+
+": TestCase" -> "a: Agencia": comprar(p)
+activate "a: Agencia"
+
+"a: Agencia" -> "p: Pedido": completar(disponibilidad)
+activate "p: Pedido"
+
+loop por la cantidad
+"p: Pedido" -> "tb: TipoB": obtenerEntradas(tipoBuscado, medioDePago)
+activate "tb: TipoB"
+
+loop por los medios de pago
+"tb: TipoB" -> "mp1: PertenenciaH": soporta(medioDePago)
+activate "mp1: PertenenciaH"
+
+"mp1: PertenenciaH" -> "ph: PertenenciaH": equals(mp1)
+activate "ph: PertenenciaH"
+return true
+end
+
+"tb: TipoB" -> "mp1: PertenenciaH": crear(precio, tipo)
+
+create ": Entrada"
+"mp1: PertenenciaH" -> ": Entrada": Entrada(tipo)
+return entrada
+end
+return entradas
+return entradas
+"a: Agencia" -> "a: Agencia": filtrarEntradasNulas()
+return entradas
+@enduml
