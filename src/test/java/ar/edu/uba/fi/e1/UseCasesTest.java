@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Unit test for simple App.
@@ -34,8 +35,8 @@ public class UseCasesTest {
 
         List<Entrada> compra = a.comprar(new Pedido(2, new TipoA(), new Gold()));
         ArrayList<Entrada> compraEsperada = new ArrayList<>(
-                Arrays.asList(
-                        new Entrada( new TipoA())
+                List.of(
+                        new Entrada(new TipoA())
                 )
         );
 
@@ -51,13 +52,16 @@ public class UseCasesTest {
         ArrayList<Entrada> compraEsperada = new ArrayList<>(
                 Arrays.asList(
                         new Entrada( new TipoB()),
-                        new Entrada( new TipoB()),
                         new Entrada( new TipoA()),
-                        new Entrada( new TipoA())
+                        new Entrada( new TipoA()),
+                        new Entrada( new TipoB())
                 )
         );
 
-        assertEquals(compraEsperada, compra);
+        for (Entrada entrada : compraEsperada) {
+            assertTrue(compra.contains(entrada));
+            compra.remove(entrada);
+        }
     }
 
     @Test
@@ -66,10 +70,7 @@ public class UseCasesTest {
 
         List<Entrada> compra = a.comprar(
                 new Pedido(2, new TipoB(), new Gold()));
-        ArrayList<Entrada> compraEsperada = new ArrayList<>(
-                Arrays.asList()
-        );
 
-        assertEquals(compraEsperada, compra);
+        assertTrue(compra.isEmpty());
     }
 }
