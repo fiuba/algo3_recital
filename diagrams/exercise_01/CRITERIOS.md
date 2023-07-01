@@ -7,8 +7,7 @@ corrección de TP1][tp1_criterios].
 
 ### Error descalificador
 
-- No implementa restricción de compra para un tipo de entrada y un medio de 
-  pago específico (-0.5)
+- No existe un medio de pago que se comporte de manera polimorfa. (-0.5)
 
 ### Error grave
 
